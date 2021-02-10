@@ -9,7 +9,7 @@ from transformers import get_linear_schedule_with_warmup
 import os
 import shutil
 import subprocess
-
+from SM3 import SM3
 
 class ATGTransformer(pl.LightningModule):
     """
@@ -69,7 +69,7 @@ class ATGTransformer(pl.LightningModule):
                 "weight_decay": 0.0,
             },
         ]
-        optimizer = AdamW(
+        optimizer = SM3(
             optimizer_grouped_parameters,
             lr=self.hparams["learning_rate"],
             eps=self.hparams["adam_epsilon"],
